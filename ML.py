@@ -12,7 +12,7 @@ from sklearn.tree import plot_tree
 from imblearn.ensemble import BalancedRandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 from imblearn.over_sampling import SMOTE
-
+import pickle
 
 data = pd.read_csv("processed.csv")
 
@@ -100,3 +100,5 @@ print(class_report_smote)
 #plot_tree(classifier, feature_names=data.columns, filled=True, class_names=['No Stroke', 'Stroke'])
 #plt.show()
 
+with open("stroke_model.pkl", "wb") as f:
+    pickle.dump(rf_smote, f)
